@@ -1,17 +1,17 @@
 package boardgame;
 
 public class Piece {
-    protected Position position;
-    private Board board;
+    protected Posicao posicao;
+    private Tabuleiro tabuleiro;
 
-    public Piece(Board board) {
-        this.board = board;
-        position = null;
+    public Piece(Tabuleiro tabuleiro) {
+        this.tabuleiro = tabuleiro;
+        posicao = null;
     }
 
     //apenas get para ngm poder editar o tabuleiro
-    //só pode ser acessado dentro do pacote tabuleiro e a subclasse da peça (Piece)
-    protected Board getBoard() {
-        return board;
+    //só pode ser acessado dentro do pacote tabuleiro e a subclasse da peças
+    protected Board getTabuleiro() {
+        return tabuleiro;
     }
 }

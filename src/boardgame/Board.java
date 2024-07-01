@@ -1,29 +1,29 @@
 package boardgame;
 
 public class Board {
-    private int rows;
-    private int columns;
-    private Piece[][] pieces;
+    private int linhas;
+    private int colunas;
+    private Pecas[][] pecas;
 
-    public Board(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
-        pieces = new Piece[rows][columns];
+    public Board(int linhas, int colunas) {
+        this.linhas = linhas;
+        this.colunas = colunas;
+        pecas = new Pecas[linhas][colunas];
     }
 
-    public int getRows() {
-        return rows;
+    public int getLinhas() {
+        return linhas;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
+    public void setLinhas(int linhas) {
+        this.linhas = linhas;
     }
 
-    public int getColumns() {
-        return columns;
+    public int getColunas() {
+        return colunas;
     }
 
-    public void setColumns(int columns) {
-        this.columns = columns;
+    public void setColunas(int colunas) {
+        this.colunas = colunas;
     }
 }
