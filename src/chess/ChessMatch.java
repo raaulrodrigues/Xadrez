@@ -28,5 +28,6 @@ public class ChessMatch {
         placeNewPiece('b', 6, new Torre(board, Color.WHITE));
         placeNewPiece('e', 8, new Rei(board, Color.BLACK));
         placeNewPiece('e', 1, new Rei(board, Color.WHITE));
+        placeNewPiece('c', 3, new Torre(board, Color.WHITE));
     }
 }
