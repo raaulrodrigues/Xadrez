@@ -30,6 +30,7 @@ public class ChessMatch {
         Piece capturedPiece = makeMove(source, target);
         return (ChessPiece)capturedPiece;
     }
+
     private void validateSourcePosition(Position position) {
         if(!board.thereIsAPiece(position)){
             throw new ChessException("Não há peça no local!!");
