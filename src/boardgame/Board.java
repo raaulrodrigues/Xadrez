@@ -28,7 +28,7 @@ public class Board {
         }
         return pieces[row][column];
     }
-
+    
     public Piece piece(Position position) {
         if (!positionExists(position)) {
             throw new BoardException("Posição fora da tabela!!");
@@ -56,6 +56,7 @@ public class Board {
         pieces[position.getRow()][position.getColumn()] = null;
         return aux;
     }
+
     private boolean positionExists(int row, int column) {
         return row >= 0 && row < rows && column >= 0 && column < columns;
     }

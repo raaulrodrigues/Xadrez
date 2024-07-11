@@ -35,6 +35,9 @@ public class ChessMatch {
         if(!board.thereIsAPiece(position)){
             throw new ChessException("Não há peça no local!!");
         }
+        if(!board.piece(position).isThereAnyPossibleMove()){
+            throw new ChessException("Não tem como usar essa peça!!");
+        }
     }
 
     private Piece makeMove(Position source, Position target) {
@@ -47,6 +50,7 @@ public class ChessMatch {
     private void placeNewPiece(char column, int row, ChessPiece piece){
         board.placePiece(piece,new ChessPosition(column, row).toPosition());
     }
+
     private void initialSetup(){
         placeNewPiece('c', 1, new Torre(board, Color.WHITE));
         placeNewPiece('c', 2, new Torre(board, Color.WHITE));
