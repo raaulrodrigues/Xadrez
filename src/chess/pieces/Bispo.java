@@ -5,15 +5,15 @@ import boardgame.Position;
 import chess.ChessPiece;
 import chess.Color;
 
-public class Torre extends ChessPiece {
+public class Bispo extends ChessPiece {
 
-    public Torre(Board board, Color color) {
+    public Bispo(Board board, Color color) {
         super(board, color);
     }
 
     @Override
     public String toString() {
-        return "T";
+        return "B";
     }
 
     @Override
@@ -22,41 +22,41 @@ public class Torre extends ChessPiece {
 
         Position p = new Position(0, 0);
 
-        //Para Cima
-        p.setValues(position.getRow() - 1, position.getColumn());
+        //NW
+        p.setValues(position.getRow() - 1, position.getColumn() - 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() - 1);
+            p.setValues(p.getRow() - 1, p.getColumn() - 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //Para Esquerdo
-        p.setValues(position.getRow(), position.getColumn() - 1);
+        //NE
+        p.setValues(position.getRow() - 1, position.getColumn() + 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
-            p.setColumn(p.getColumn() - 1);
+            p.setValues(p.getRow() - 1, p.getColumn() + 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //Para Direito
-        p.setValues(position.getRow(), position.getColumn() + 1);
+        //SE
+        p.setValues(position.getRow() + 1, position.getColumn() + 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
-            p.setColumn(p.getColumn() + 1);
+            p.setValues(p.getRow() + 1, p.getColumn() + 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //Para Baixo
-        p.setValues(position.getRow() + 1, position.getColumn());
+        //SW
+        p.setValues(position.getRow() + 1, position.getColumn() - 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() + 1);
+            p.setValues(p.getRow() + 1, p.getColumn() - 1);
         }
         if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
