@@ -1,13 +1,14 @@
 package boardgame;
 
 public class Board {
+
     private int rows;
     private int columns;
     private Piece[][] pieces;
 
     public Board(int rows, int columns) {
         if (rows < 1 || columns < 1) {
-            throw new BoardException("Erro!! Tabela precisa ter mais de 1 linha e coluna!!");
+            throw new BoardException("Erro!! Apenas tabela com mais de 1 linha e coluna.");
         }
         this.rows = rows;
         this.columns = columns;
@@ -24,31 +25,31 @@ public class Board {
 
     public Piece piece(int row, int column) {
         if (!positionExists(row, column)) {
-            throw new BoardException("Posição fora da tabela!!");
+            throw new BoardException("Não existe essa posição.");
         }
         return pieces[row][column];
     }
-    
+
     public Piece piece(Position position) {
         if (!positionExists(position)) {
-            throw new BoardException("Posição fora da tabela!!");
+            throw new BoardException("Não existe essa posição.");
         }
         return pieces[position.getRow()][position.getColumn()];
     }
 
     public void placePiece(Piece piece, Position position) {
         if (thereIsAPiece(position)) {
-            throw new BoardException("Já há uma peça nessa posição!!" + position);
+            throw new BoardException("Já tem uma peça nessa posição " + position);
         }
         pieces[position.getRow()][position.getColumn()] = piece;
         piece.position = position;
     }
 
-    public Piece removePiece(Position position){
+    public Piece removePiece(Position position) {
         if (!positionExists(position)) {
-            throw new BoardException("Posição fora da tabela!!");
+            throw new BoardException("Não existe essa posição.");
         }
-        if(piece(position) == null){
+        if (piece(position) == null) {
             return null;
         }
         Piece aux = piece(position);
@@ -67,7 +68,7 @@ public class Board {
 
     public boolean thereIsAPiece(Position position) {
         if (!positionExists(position)) {
-            throw new BoardException("Posição fora da tabela!!");
+            throw new BoardException("Não existe essa posição.");
         }
         return piece(position) != null;
     }
