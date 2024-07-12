@@ -25,7 +25,7 @@ public class Rei extends ChessPiece {
         return p == null || p.getColor() != getColor();
     }
 
-    private boolean testRookCastling(Position position) {
+    private boolean testTorreCastling(Position position) {
         ChessPiece p = (ChessPiece)getBoard().piece(position);
         return p != null && p instanceof Torre && p.getColor() == getColor() && p.getMoveCount() == 0;
     }
@@ -60,44 +60,43 @@ public class Rei extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //NW
+        ////Para Noroeste
         p.setValues(position.getRow() - 1, position.getColumn() - 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //NE
+        //Para Nordeste
         p.setValues(position.getRow() - 1, position.getColumn() + 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //SW
+        //Para Sudoeste
         p.setValues(position.getRow() + 1, position.getColumn() - 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //SE
+        //Para Sudeste
         p.setValues(position.getRow() + 1, position.getColumn() + 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        // #specialmove castling
         if (getMoveCount() == 0 && !chessMatch.getCheck()) {
-            // #specialmove castling kingside rook
+
             Position posT1 = new Position(position.getRow(), position.getColumn() + 3);
-            if (testRookCastling(posT1)) {
+            if (testTorreCastling(posT1)) {
                 Position p1 = new Position(position.getRow(), position.getColumn() + 1);
                 Position p2 = new Position(position.getRow(), position.getColumn() + 2);
                 if (getBoard().piece(p1) == null && getBoard().piece(p2) == null) {
                     mat[position.getRow()][position.getColumn() + 2] = true;
                 }
             }
-            // #specialmove castling queenside rook
+
             Position posT2 = new Position(position.getRow(), position.getColumn() - 4);
-            if (testRookCastling(posT2)) {
+            if (testTorreCastling(posT2)) {
                 Position p1 = new Position(position.getRow(), position.getColumn() - 1);
                 Position p2 = new Position(position.getRow(), position.getColumn() - 2);
                 Position p3 = new Position(position.getRow(), position.getColumn() - 3);

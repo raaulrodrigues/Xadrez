@@ -113,29 +113,29 @@ public class ChessMatch {
         if (p instanceof Rei && target.getColumn() == source.getColumn() + 2) {
             Position sourceT = new Position(source.getRow(), source.getColumn() + 3);
             Position targetT = new Position(source.getRow(), source.getColumn() + 1);
-            ChessPiece rook = (ChessPiece)board.removePiece(sourceT);
-            board.placePiece(rook, targetT);
-            rook.increaseMoveCount();
+            ChessPiece torre = (ChessPiece)board.removePiece(sourceT);
+            board.placePiece(torre, targetT);
+            torre.increaseMoveCount();
         }
 
         if (p instanceof Rei && target.getColumn() == source.getColumn() - 2) {
             Position sourceT = new Position(source.getRow(), source.getColumn() - 4);
             Position targetT = new Position(source.getRow(), source.getColumn() - 1);
-            ChessPiece rook = (ChessPiece)board.removePiece(sourceT);
-            board.placePiece(rook, targetT);
-            rook.increaseMoveCount();
+            ChessPiece torre = (ChessPiece)board.removePiece(sourceT);
+            board.placePiece(torre, targetT);
+            torre.increaseMoveCount();
         }
 
         if (p instanceof Peão) {
             if (source.getColumn() != target.getColumn() && capturedPiece == null) {
-                Position pawnPosition;
+                Position peaoPosition;
                 if (p.getColor() == Color.GREEN) {
-                    pawnPosition = new Position(target.getRow() + 1, target.getColumn());
+                    peaoPosition = new Position(target.getRow() + 1, target.getColumn());
                 }
                 else {
-                    pawnPosition = new Position(target.getRow() - 1, target.getColumn());
+                    peaoPosition = new Position(target.getRow() - 1, target.getColumn());
                 }
-                capturedPiece = board.removePiece(pawnPosition);
+                capturedPiece = board.removePiece(peaoPosition);
                 capturedPieces.add(capturedPiece);
                 piecesOnTheBoard.remove(capturedPiece);
             }
@@ -155,7 +155,7 @@ public class ChessMatch {
             piecesOnTheBoard.add(capturedPiece);
         }
 
-        // #specialmove castling kingside rook
+
         if (p instanceof Rei && target.getColumn() == source.getColumn() + 2) {
             Position sourceT = new Position(source.getRow(), source.getColumn() + 3);
             Position targetT = new Position(source.getRow(), source.getColumn() + 1);
@@ -164,7 +164,7 @@ public class ChessMatch {
             Torre.decreaseMoveCount();
         }
 
-        // #specialmove castling queenside rook
+
         if (p instanceof Rei && target.getColumn() == source.getColumn() - 2) {
             Position sourceT = new Position(source.getRow(), source.getColumn() - 4);
             Position targetT = new Position(source.getRow(), source.getColumn() - 1);
@@ -173,7 +173,7 @@ public class ChessMatch {
             Torre.decreaseMoveCount();
         }
 
-        // #specialmove en passant
+
         if (p instanceof Peão) {
             if (source.getColumn() != target.getColumn() && capturedPiece == enPassantVulnerable) {
                 ChessPiece peao = (ChessPiece)board.removePiece(target);
